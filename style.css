@@ -1,0 +1,186 @@
+:root {
+  --bg: #f5f5f7;
+  --text: #141416;
+  --intro-title: rgba(38, 40, 44, 0.88);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#intro-stack {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+#intro-stack.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#intro-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg);
+  background-size: 256px 256px;
+  background-repeat: repeat;
+}
+
+#intro-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+#intro-mesh {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+#intro-title {
+  position: fixed;
+  top: clamp(4.75rem, 15.5vh, 7.75rem);
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%) translateZ(0);
+  padding: 0 1.5rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+#intro-title.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#intro-title h1 {
+  margin: 0;
+  font-family: "Share Tech", sans-serif;
+  font-size: clamp(1.65rem, 4.2vmin, 2.75rem);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  color: var(--intro-title);
+  text-align: center;
+  white-space: nowrap;
+}
+
+#p5-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+#p5-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#p5-container.is-intro canvas,
+#p5-container.is-question canvas,
+#p5-container.is-collage canvas {
+  background: transparent !important;
+}
+
+#p5-container.is-question {
+  z-index: 4;
+}
+
+#intro-stack.is-collage {
+  z-index: 5;
+}
+
+#p5-container.is-collage {
+  z-index: 6;
+}
+
+#intro-stack.is-collage #intro-face {
+  z-index: 1;
+}
+
+#intro-stack.is-collage #intro-mesh {
+  z-index: 2;
+}
+
+#question-title {
+  position: fixed;
+  top: clamp(2.5rem, 9vh, 5rem);
+  left: 0;
+  right: 0;
+  z-index: 25;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+#question-title:not(.is-visible) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#question-title p {
+  margin: 0;
+  max-width: min(94vw, 48rem);
+  font-family: "Chiron GoRound TC", sans-serif;
+  font-optical-sizing: auto;
+  font-size: clamp(1rem, 2.4vmin, 1.625rem);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: #222428;
+  text-align: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#three-container {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#three-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}

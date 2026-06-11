@@ -1,0 +1,229 @@
+<svg width="2200" height="1450" viewBox="0 0 2200 1450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="2200" y2="1450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F7FB"/>
+      <stop offset="1" stop-color="#ECEFF6"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="0" y2="1450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7ECFA"/>
+      <stop offset="1" stop-color="#F8FAFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#6D7AA5" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5B6582"/>
+    </marker>
+    <style>
+      .title { font: 700 42px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #27314A; }
+      .subtitle { font: 400 18px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #5E6785; }
+      .section { font: 700 22px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #2D3752; }
+      .boxTitle { font: 700 20px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #263047; }
+      .boxFile { font: 600 15px "Courier New", monospace; fill: #6C7593; }
+      .body { font: 400 15px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #43506B; }
+      .small { font: 400 14px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #5C6786; }
+      .label { font: 600 14px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #44516E; }
+      .chip { font: 700 12px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #34415D; }
+      .arrowText { font: 600 13px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #58637F; }
+      .box { fill: #FFFFFF; stroke: #CFD7EA; stroke-width: 1.5; rx: 22; }
+      .boxBlue { fill: #F7FAFF; stroke: #B8CAE8; stroke-width: 1.5; rx: 22; }
+      .boxPurple { fill: #FBF8FF; stroke: #D7C7F0; stroke-width: 1.5; rx: 22; }
+      .boxGreen { fill: #F6FCFA; stroke: #B7DDCE; stroke-width: 1.5; rx: 22; }
+      .boxPeach { fill: #FFF8F3; stroke: #EBCBB2; stroke-width: 1.5; rx: 22; }
+      .boxGray { fill: #F7F8FC; stroke: #D6DBEA; stroke-width: 1.5; rx: 22; }
+      .group { fill: rgba(255,255,255,0.55); stroke: #D8DEEE; stroke-width: 1.2; rx: 28; stroke-dasharray: 8 6; }
+      .line { stroke: #5B6582; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .lineSoft { stroke: #8B97B5; stroke-width: 2; fill: none; marker-end: url(#arrow); stroke-dasharray: 8 6; }
+      .lineData { stroke: #5A8F7C; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .lineFx { stroke: #8C72B8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="2200" height="1450" fill="url(#bg)"/>
+  <rect x="40" y="34" width="2120" height="1382" rx="30" fill="url(#headerGrad)" stroke="#D8DEEE"/>
+
+  <text x="90" y="105" class="title">Unmask Me 技术映射图</text>
+  <text x="90" y="140" class="subtitle">基于当前代码结构整理：入口装配、运行时依赖、共享状态、场景模块、数据生成与渲染关系</text>
+
+  <rect x="70" y="180" width="2060" height="150" class="group"/>
+  <text x="95" y="218" class="section">1. 页面入口与外部运行时</text>
+
+  <rect x="110" y="240" width="300" height="64" rx="18" class="boxBlue" filter="url(#shadow)"/>
+  <text x="130" y="266" class="boxTitle">页面入口</text>
+  <text x="130" y="289" class="boxFile">index.html</text>
+  <text x="230" y="289" class="small">挂载 DOM 容器与脚本顺序</text>
+
+  <rect x="500" y="225" width="260" height="92" rx="20" class="boxGreen" filter="url(#shadow)"/>
+  <text x="520" y="254" class="boxTitle">p5.js</text>
+  <text x="520" y="278" class="body">生命周期：preload / setup / draw</text>
+  <text x="520" y="300" class="body">画布、图像、交互、保存</text>
+
+  <rect x="820" y="225" width="260" height="92" rx="20" class="boxGreen" filter="url(#shadow)"/>
+  <text x="840" y="254" class="boxTitle">ml5.js</text>
+  <text x="840" y="278" class="body">handPose + faceMesh</text>
+  <text x="840" y="300" class="body">输出 hands / faces 实时检测结果</text>
+
+  <rect x="1140" y="225" width="260" height="92" rx="20" class="boxGreen" filter="url(#shadow)"/>
+  <text x="1160" y="254" class="boxTitle">three.js</text>
+  <text x="1160" y="278" class="body">粒子与发光特效容器</text>
+  <text x="1160" y="300" class="body">由 particles.js 封装调度</text>
+
+  <rect x="1460" y="225" width="290" height="92" rx="20" class="boxPurple" filter="url(#shadow)"/>
+  <text x="1480" y="254" class="boxTitle">particles.js</text>
+  <text x="1480" y="278" class="boxFile">ThreeParticles</text>
+  <text x="1480" y="300" class="body">独立三维粒子背景与肖像辉光</text>
+
+  <rect x="1810" y="225" width="270" height="92" rx="20" class="boxPeach" filter="url(#shadow)"/>
+  <text x="1830" y="254" class="boxTitle">素材资源</text>
+  <text x="1830" y="278" class="boxFile">img/*  +  favicon.ico</text>
+  <text x="1830" y="300" class="body">纸片标签、按钮图标、视觉贴图</text>
+
+  <path d="M 410 272 C 445 272, 460 272, 500 272" class="line"/>
+  <path d="M 760 272 C 785 272, 795 272, 820 272" class="line"/>
+  <path d="M 1080 272 C 1105 272, 1115 272, 1140 272" class="line"/>
+  <path d="M 1400 272 C 1425 272, 1435 272, 1460 272" class="line"/>
+  <path d="M 1750 272 C 1775 272, 1785 272, 1810 272" class="lineData"/>
+
+  <text x="430" y="255" class="arrowText">加载脚本</text>
+  <text x="785" y="255" class="arrowText">相机与 AI</text>
+  <text x="1105" y="255" class="arrowText">特效渲染</text>
+  <text x="1430" y="255" class="arrowText">封装</text>
+  <text x="1772" y="255" class="arrowText">图像资源</text>
+
+  <rect x="70" y="360" width="2060" height="250" class="group"/>
+  <text x="95" y="398" class="section">2. 核心调度层</text>
+
+  <rect x="140" y="430" width="470" height="135" rx="24" class="boxBlue" filter="url(#shadow)"/>
+  <text x="165" y="460" class="boxTitle">主控制器 / 场景编排</text>
+  <text x="165" y="485" class="boxFile">sketch.js</text>
+  <text x="165" y="512" class="body">职责：preload 资源、setup 初始化、draw 按 state 分发场景、windowResized、自定义 resetExperience / startExperience / enterMainScene</text>
+  <text x="165" y="543" class="body">是所有功能模块的统一调度中心</text>
+
+  <rect x="690" y="430" width="420" height="135" rx="24" class="boxGray" filter="url(#shadow)"/>
+  <text x="715" y="460" class="boxTitle">共享状态中心</text>
+  <text x="715" y="485" class="boxFile">js/state.js</text>
+  <text x="715" y="512" class="body">保存全局 state、相机/手势/人脸结果、问答进度、拼贴标签、面部补丁、倒计时、粒子缓存</text>
+  <text x="715" y="543" class="body">同时定义 BubbleParticle / PaperFragment 等通用对象</text>
+
+  <rect x="1190" y="430" width="420" height="135" rx="24" class="boxPeach" filter="url(#shadow)"/>
+  <text x="1215" y="460" class="boxTitle">配置与映射规则</text>
+  <text x="1215" y="485" class="boxFile">js/config.js</text>
+  <text x="1215" y="512" class="body">QUESTIONS、中文标签词库、PATCH_LAYOUTS、颜色、动画时长、命中半径等常量</text>
+  <text x="1215" y="543" class="body">为问题页、拼贴页、补丁页提供规则输入</text>
+
+  <rect x="1690" y="430" width="350" height="135" rx="24" class="boxGreen" filter="url(#shadow)"/>
+  <text x="1715" y="460" class="boxTitle">输入跟踪层</text>
+  <text x="1715" y="485" class="boxFile">js/tracking.js</text>
+  <text x="1715" y="512" class="body">初始化摄像头与 ml5，计算手指坐标、平滑指针、面部框、视频坐标到屏幕坐标映射</text>
+  <text x="1715" y="543" class="body">为交互模块提供实时输入数据</text>
+
+  <path d="M 610 498 C 640 498, 650 498, 690 498" class="line"/>
+  <path d="M 1110 498 C 1140 498, 1150 498, 1190 498" class="line"/>
+  <path d="M 1610 498 C 1640 498, 1650 498, 1690 498" class="line"/>
+  <path d="M 1840 430 C 1840 380, 1320 350, 380 350 C 220 350, 220 390, 220 430" class="lineSoft"/>
+  <text x="642" y="480" class="arrowText">读写状态</text>
+  <text x="1142" y="480" class="arrowText">读取规则</text>
+  <text x="1638" y="480" class="arrowText">读取输入</text>
+  <text x="940" y="340" class="arrowText">初始化后回流到主循环</text>
+
+  <rect x="70" y="640" width="2060" height="520" class="group"/>
+  <text x="95" y="678" class="section">3. 功能模块与场景流转</text>
+
+  <rect x="120" y="725" width="360" height="130" rx="22" class="boxPurple" filter="url(#shadow)"/>
+  <text x="145" y="755" class="boxTitle">Intro 场景</text>
+  <text x="145" y="780" class="boxFile">js/intro.js</text>
+  <text x="145" y="806" class="body">初始化 HTML/canvas 叠层、绘制雾化人脸与网格、处理手势滑动进入体验、控制标题与舞台显隐</text>
+  <text x="145" y="835" class="body">状态：intro</text>
+
+  <rect x="540" y="725" width="360" height="130" rx="22" class="boxPurple" filter="url(#shadow)"/>
+  <text x="565" y="755" class="boxTitle">问题气泡场景</text>
+  <text x="565" y="780" class="boxFile">js/questions.js</text>
+  <text x="565" y="806" class="body">展示 QUESTIONS、同步题目标题、计算手势悬停与气泡溶解、写入 userAnswers、切换到 collageStudio</text>
+  <text x="565" y="835" class="body">状态：gestureQuestion</text>
+
+  <rect x="960" y="725" width="400" height="130" rx="22" class="boxPurple" filter="url(#shadow)"/>
+  <text x="985" y="755" class="boxTitle">拼贴标签工作台</text>
+  <text x="985" y="780" class="boxFile">js/collage.js</text>
+  <text x="985" y="806" class="body">围绕人脸生成标签拼贴、计算锚点与安全区、允许撕下标签、截图保存碎片结果、进入生成补丁阶段</text>
+  <text x="985" y="835" class="body">状态：collageStudio / resultFragments</text>
+
+  <rect x="1420" y="725" width="300" height="130" rx="22" class="boxPeach" filter="url(#shadow)"/>
+  <text x="1445" y="755" class="boxTitle">标签生成器</text>
+  <text x="1445" y="780" class="boxFile">js/patches.js</text>
+  <text x="1445" y="806" class="body">根据 userAnswers 生成 coreLabels，构建 facePatches 几何、文本布局、材质纹理、命中区域</text>
+  <text x="1445" y="835" class="body">供后续补丁页渲染</text>
+
+  <rect x="1780" y="725" width="300" height="130" rx="22" class="boxPeach" filter="url(#shadow)"/>
+  <text x="1805" y="755" class="boxTitle">阶段页渲染器</text>
+  <text x="1805" y="780" class="boxFile">js/stages.js</text>
+  <text x="1805" y="806" class="body">处理中间页、撕补丁阶段、肖像倒计时、最终肖像页</text>
+  <text x="1805" y="835" class="body">状态：generatingLabels / patchMask / finalPortrait</text>
+
+  <rect x="850" y="920" width="520" height="170" rx="26" class="boxBlue" filter="url(#shadow)"/>
+  <text x="875" y="952" class="boxTitle">统一 UI 交互层</text>
+  <text x="875" y="978" class="boxFile">js/ui.js</text>
+  <text x="875" y="1006" class="body">按钮绘制、保存提示、pointer 命中判断、mouse/touch 入口分发</text>
+  <text x="875" y="1033" class="body">根据当前 state，把点击事件分别转发到问题气泡 / 拼贴页 / 补丁页 / 肖像页</text>
+  <text x="875" y="1061" class="body">同时提供 drawCenterMessage、drawFingerGlow 等通用 UI 能力</text>
+
+  <path d="M 480 790 C 510 790, 515 790, 540 790" class="line"/>
+  <path d="M 900 790 C 930 790, 935 790, 960 790" class="line"/>
+  <path d="M 1360 790 C 1385 790, 1395 790, 1420 790" class="lineData"/>
+  <path d="M 1720 790 C 1745 790, 1755 790, 1780 790" class="line"/>
+
+  <text x="495" y="772" class="arrowText">进入问答</text>
+  <text x="915" y="772" class="arrowText">完成题目后进入拼贴</text>
+  <text x="1378" y="772" class="arrowText">生成标签数据</text>
+  <text x="1737" y="772" class="arrowText">进入生成/补丁/肖像阶段</text>
+
+  <path d="M 720 855 C 720 900, 930 905, 930 920" class="lineSoft"/>
+  <path d="M 1160 855 C 1160 888, 1130 898, 1130 920" class="lineSoft"/>
+  <path d="M 1930 855 C 1930 910, 1320 905, 1320 920" class="lineSoft"/>
+  <text x="772" y="895" class="arrowText">点击事件</text>
+  <text x="1138" y="895" class="arrowText">操作按钮</text>
+  <text x="1680" y="895" class="arrowText">保存 / 重启 / Finish</text>
+
+  <rect x="120" y="900" width="620" height="190" rx="26" class="boxGray" filter="url(#shadow)"/>
+  <text x="145" y="932" class="boxTitle">状态流转主线</text>
+  <text x="145" y="965" class="body">intro → gestureQuestion → collageStudio → generatingLabels → patchMask → finalPortrait</text>
+  <text x="145" y="997" class="body">分支：collageStudio 可截图到 resultFragments；finalPortrait 可保存或 restart；任意 restart 回到 intro</text>
+  <text x="145" y="1030" class="body">触发来源：手势悬停、手指命中、鼠标/触摸点击、倒计时结束</text>
+  <text x="145" y="1063" class="body">核心状态变量：state、questionIndex、userAnswers、coreLabels、facePatches、keptLabels、removedLabels</text>
+
+  <rect x="1430" y="920" width="650" height="170" rx="26" class="boxGreen" filter="url(#shadow)"/>
+  <text x="1455" y="952" class="boxTitle">输入与效果的横向支撑</text>
+  <text x="1455" y="980" class="body">tracking.js 为各场景提供：摄像头底图、人脸框、手指位置、平滑指针、intro 构图基准</text>
+  <text x="1455" y="1008" class="body">particles.js / three.js 为补丁撕裂、肖像辉光、背景粒子提供视觉增强</text>
+  <text x="1455" y="1036" class="body">config.js 为标签词库、补丁布局、交互阈值、动画时长提供常量依赖</text>
+  <text x="1455" y="1064" class="body">state.js 贯穿所有场景模块，既是数据总线，也是运行时缓存区</text>
+
+  <path d="M 1810 565 C 1810 640, 300 640, 300 725" class="lineSoft"/>
+  <path d="M 1810 565 C 1810 655, 720 655, 720 725" class="lineSoft"/>
+  <path d="M 1810 565 C 1810 670, 1160 670, 1160 725" class="lineSoft"/>
+  <path d="M 1810 565 C 1810 680, 1930 680, 1930 725" class="lineSoft"/>
+  <text x="1470" y="628" class="arrowText">实时手势 / 人脸输入供应</text>
+
+  <path d="M 1280 565 C 1280 650, 1570 650, 1570 725" class="lineData"/>
+  <path d="M 1280 565 C 1280 620, 720 620, 720 725" class="lineData"/>
+  <path d="M 1280 565 C 1280 640, 1160 640, 1160 725" class="lineData"/>
+  <text x="1200" y="615" class="arrowText">问题 / 标签 / 补丁布局规则</text>
+
+  <path d="M 900 565 C 900 640, 300 640, 300 725" class="line"/>
+  <path d="M 900 565 C 900 655, 720 655, 720 725" class="line"/>
+  <path d="M 900 565 C 900 690, 1160 690, 1160 725" class="line"/>
+  <path d="M 900 565 C 900 705, 1570 705, 1570 725" class="line"/>
+  <path d="M 900 565 C 900 720, 1930 720, 1930 725" class="line"/>
+  <path d="M 900 565 C 900 810, 1110 810, 1110 920" class="line"/>
+  <text x="910" y="607" class="arrowText">共享状态读写</text>
+
+  <path d="M 1460 272 C 1460 355, 1990 355, 1990 725" class="lineFx"/>
+  <path d="M 1460 272 C 1460 390, 1740 390, 1740 920" class="lineFx"/>
+  <text x="1475" y="382" class="arrowText">粒子 / 发光特效</text>
+
+  <rect x="70" y="1190" width="2060" height="180" class="group"/>
+  <text x="95" y="1228" class="section">4. 技术映射总结</text>
+
+  <rect x="120" y="1260" width="1960" height="82" rx="22" class="box" filter="url(#shadow)"/>
+  <text x="145" y="1291" class="body">结构上这是一个“前端单页 + 实时视觉交互”应用：`index.html` 负责装配，`sketch.js` 统一编排，`state.js` 做全局数据总线，`tracking.js` 提供手势/人脸输入，`questions.js / collage.js / stages.js` 分别承接问答、拼贴、补丁与最终肖像三段核心体验。</text>
+  <text x="145" y="1323" class="body">映射关系上可概括为：外部运行时（p5/ml5/three） → 输入跟踪与共享状态 → 场景模块 → UI 分发与保存 → 最终视觉结果；其中 `patches.js` 和 `config.js` 主要扮演“规则生成器”和“结构映射器”的角色。</text>
+</svg>

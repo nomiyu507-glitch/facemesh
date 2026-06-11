@@ -1,0 +1,272 @@
+<svg width="2600" height="1680" viewBox="0 0 2600 1680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="2600" y2="1680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFE"/>
+      <stop offset="1" stop-color="#EDF2FA"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#6E7AA4" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5D6782"/>
+    </marker>
+    <style>
+      .title { font: 700 42px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #27314A; }
+      .sub { font: 400 18px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #62708C; }
+      .section { font: 700 22px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #2E3852; }
+      .boxTitle { font: 700 22px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #29344D; }
+      .file { font: 600 16px "Courier New", monospace; fill: #6C7693; }
+      .desc { font: 400 15px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #46536F; }
+      .small { font: 600 13px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #56627D; }
+      .tag { font: 700 13px "Arial", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #44516D; }
+      .group { fill: rgba(255,255,255,0.42); stroke: #D7DEEE; stroke-width: 1.2; stroke-dasharray: 8 6; rx: 28; }
+      .blue { fill: #F8FBFF; stroke: #B9C9E6; stroke-width: 1.6; rx: 22; }
+      .green { fill: #F6FCFA; stroke: #B8DDCF; stroke-width: 1.6; rx: 22; }
+      .purple { fill: #FBF8FF; stroke: #D7CAF0; stroke-width: 1.6; rx: 22; }
+      .peach { fill: #FFF8F4; stroke: #EACBB4; stroke-width: 1.6; rx: 22; }
+      .gray { fill: #F7F8FC; stroke: #D5DBEA; stroke-width: 1.6; rx: 22; }
+      .line { stroke: #5D6782; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .lineDash { stroke: #8B97B4; stroke-width: 2; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+      .lineData { stroke: #5A8E7B; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .lineFx { stroke: #866FB8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="2600" height="1680" fill="url(#bg)"/>
+  <text x="70" y="84" class="title">全文件调用关系图</text>
+  <text x="70" y="118" class="sub">从 index.html 开始，展开当前文件夹内主要文件的加载顺序、直接调用关系与资源依赖</text>
+
+  <rect x="50" y="150" width="2500" height="1460" class="group"/>
+
+  <text x="80" y="192" class="section">A. 页面入口</text>
+  <rect x="90" y="250" width="340" height="180" class="blue" filter="url(#shadow)"/>
+  <text x="118" y="290" class="boxTitle">页面入口 / 装配器</text>
+  <text x="118" y="320" class="file">index.html</text>
+  <text x="118" y="354" class="desc">挂载 DOM 容器</text>
+  <text x="118" y="380" class="desc">按顺序加载外部库与项目脚本</text>
+  <text x="118" y="404" class="small">#app / #p5-container / #three-container</text>
+
+  <rect x="90" y="470" width="340" height="120" class="gray" filter="url(#shadow)"/>
+  <text x="118" y="505" class="boxTitle">样式</text>
+  <text x="118" y="534" class="file">style.css</text>
+  <text x="118" y="562" class="desc">页面布局 / 图层 / 字体 / 动画样式</text>
+
+  <rect x="90" y="620" width="340" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="118" y="655" class="boxTitle">图标</text>
+  <text x="118" y="684" class="file">favicon.ico</text>
+  <text x="118" y="708" class="desc">浏览器标签页图标</text>
+
+  <path d="M 260 430 C 260 445, 260 452, 260 470" class="line"/>
+  <path d="M 260 430 C 260 500, 260 555, 260 620" class="line"/>
+  <text x="272" y="454" class="tag">link</text>
+  <text x="272" y="580" class="tag">icon</text>
+
+  <text x="520" y="192" class="section">B. 外部运行库</text>
+  <rect x="560" y="250" width="310" height="110" class="green" filter="url(#shadow)"/>
+  <text x="588" y="288" class="boxTitle">p5.js</text>
+  <text x="588" y="318" class="desc">preload / setup / draw / canvas</text>
+  <text x="588" y="341" class="small">被 sketch.js 直接使用</text>
+
+  <rect x="560" y="390" width="310" height="110" class="green" filter="url(#shadow)"/>
+  <text x="588" y="428" class="boxTitle">ml5.js</text>
+  <text x="588" y="458" class="desc">handPose + faceMesh</text>
+  <text x="588" y="481" class="small">被 tracking.js 初始化</text>
+
+  <rect x="560" y="530" width="310" height="110" class="green" filter="url(#shadow)"/>
+  <text x="588" y="568" class="boxTitle">three.js</text>
+  <text x="588" y="598" class="desc">WebGL / 粒子 / 发光容器</text>
+  <text x="588" y="621" class="small">被 particles.js 封装</text>
+
+  <path d="M 430 300 C 490 300, 500 300, 560 300" class="line"/>
+  <path d="M 430 330 C 500 330, 500 440, 560 440" class="line"/>
+  <path d="M 430 360 C 500 360, 500 580, 560 580" class="line"/>
+  <text x="470" y="286" class="tag">script</text>
+  <text x="468" y="423" class="tag">script</text>
+  <text x="468" y="563" class="tag">script</text>
+
+  <text x="960" y="192" class="section">C. 项目脚本加载顺序</text>
+  <rect x="1000" y="230" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="266" class="boxTitle">粒子封装</text>
+  <text x="1028" y="294" class="file">particles.js</text>
+  <text x="1028" y="318" class="desc">暴露 ThreeParticles 接口</text>
+
+  <rect x="1000" y="350" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="386" class="boxTitle">配置常量</text>
+  <text x="1028" y="414" class="file">js/config.js</text>
+  <text x="1028" y="438" class="desc">QUESTIONS / 词库 / 布局参数</text>
+
+  <rect x="1000" y="470" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="506" class="boxTitle">共享状态</text>
+  <text x="1028" y="534" class="file">js/state.js</text>
+  <text x="1028" y="558" class="desc">state / userAnswers / 粒子类 / 资源引用</text>
+
+  <rect x="1000" y="590" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="626" class="boxTitle">输入追踪</text>
+  <text x="1028" y="654" class="file">js/tracking.js</text>
+  <text x="1028" y="678" class="desc">camera / ml5 / hand / face / 映射</text>
+
+  <rect x="1000" y="710" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="746" class="boxTitle">补丁逻辑</text>
+  <text x="1028" y="774" class="file">js/patches.js</text>
+  <text x="1028" y="798" class="desc">生成 coreLabels / facePatches / 绘制补丁</text>
+
+  <rect x="1000" y="830" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="866" class="boxTitle">UI 事件层</text>
+  <text x="1028" y="894" class="file">js/ui.js</text>
+  <text x="1028" y="918" class="desc">按钮 / 点击分发 / 保存</text>
+
+  <rect x="1000" y="950" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="986" class="boxTitle">Intro 场景</text>
+  <text x="1028" y="1014" class="file">js/intro.js</text>
+  <text x="1028" y="1038" class="desc">intro 图层 / 网格 / 滑动进入</text>
+
+  <rect x="1000" y="1070" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="1106" class="boxTitle">Question 场景</text>
+  <text x="1028" y="1134" class="file">js/questions.js</text>
+  <text x="1028" y="1158" class="desc">Q1-Q4 选择 / 写入答案</text>
+
+  <rect x="1000" y="1190" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="1226" class="boxTitle">Collage 场景</text>
+  <text x="1028" y="1254" class="file">js/collage.js</text>
+  <text x="1028" y="1278" class="desc">拼贴标签 / 撕标签 / 碎片截图</text>
+
+  <rect x="1000" y="1310" width="340" height="100" class="purple" filter="url(#shadow)"/>
+  <text x="1028" y="1346" class="boxTitle">阶段页</text>
+  <text x="1028" y="1374" class="file">js/stages.js</text>
+  <text x="1028" y="1398" class="desc">Generating / Patch / FinalPortrait</text>
+
+  <rect x="1000" y="1430" width="340" height="100" class="peach" filter="url(#shadow)"/>
+  <text x="1028" y="1466" class="boxTitle">主调度器</text>
+  <text x="1028" y="1494" class="file">sketch.js</text>
+  <text x="1028" y="1518" class="desc">preload / setup / draw / state 分发</text>
+
+  <path d="M 430 284 C 700 284, 720 280, 1000 280" class="line"/>
+  <path d="M 430 300 C 730 300, 730 400, 1000 400" class="line"/>
+  <path d="M 430 316 C 740 316, 740 520, 1000 520" class="line"/>
+  <path d="M 430 332 C 750 332, 750 640, 1000 640" class="line"/>
+  <path d="M 430 348 C 760 348, 760 760, 1000 760" class="line"/>
+  <path d="M 430 364 C 770 364, 770 880, 1000 880" class="line"/>
+  <path d="M 430 380 C 780 380, 780 1000, 1000 1000" class="line"/>
+  <path d="M 430 396 C 790 396, 790 1120, 1000 1120" class="line"/>
+  <path d="M 430 412 C 800 412, 800 1240, 1000 1240" class="line"/>
+  <path d="M 430 428 C 810 428, 810 1360, 1000 1360" class="line"/>
+  <path d="M 430 444 C 820 444, 820 1480, 1000 1480" class="line"/>
+
+  <text x="718" y="270" class="tag">按顺序加载</text>
+  <text x="720" y="392" class="tag">按顺序加载</text>
+  <text x="724" y="512" class="tag">按顺序加载</text>
+  <text x="728" y="632" class="tag">按顺序加载</text>
+  <text x="732" y="752" class="tag">按顺序加载</text>
+  <text x="736" y="872" class="tag">按顺序加载</text>
+  <text x="740" y="992" class="tag">按顺序加载</text>
+  <text x="744" y="1112" class="tag">按顺序加载</text>
+  <text x="748" y="1232" class="tag">按顺序加载</text>
+  <text x="752" y="1352" class="tag">按顺序加载</text>
+  <text x="756" y="1472" class="tag">按顺序加载</text>
+
+  <text x="1430" y="192" class="section">D. 直接调用关系</text>
+  <rect x="1470" y="260" width="420" height="120" class="blue" filter="url(#shadow)"/>
+  <text x="1498" y="298" class="boxTitle">sketch.js → 生命周期入口</text>
+  <text x="1498" y="328" class="desc">setup(): initVideo / initIntroLayers / initThreeParticles / resetExperience</text>
+  <text x="1498" y="351" class="desc">draw(): 按 state 调用各场景函数</text>
+
+  <rect x="1470" y="420" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="456" class="boxTitle">tracking.js</text>
+  <text x="1498" y="484" class="desc">初始化摄像头与 ml5，提供手势/人脸数据</text>
+
+  <rect x="1470" y="550" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="586" class="boxTitle">intro.js</text>
+  <text x="1498" y="614" class="desc">drawIntro() / initIntroLayers() / setPoeticSceneVisible()</text>
+
+  <rect x="1470" y="680" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="716" class="boxTitle">questions.js</text>
+  <text x="1498" y="744" class="desc">drawGestureQuestion() / selectQuestionOrb()</text>
+
+  <rect x="1470" y="810" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="846" class="boxTitle">collage.js</text>
+  <text x="1498" y="874" class="desc">drawCollageStudio() / initCollageStudio() / startFragmentCapture()</text>
+
+  <rect x="1470" y="940" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="976" class="boxTitle">stages.js</text>
+  <text x="1498" y="1004" class="desc">drawGeneratingLabels() / drawPatchMaskStage() / drawFinalPortrait()</text>
+
+  <rect x="1470" y="1070" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="1106" class="boxTitle">ui.js</text>
+  <text x="1498" y="1134" class="desc">mouse/touch 点击统一转发到当前 state 对应页面</text>
+
+  <rect x="1470" y="1200" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="1236" class="boxTitle">patches.js</text>
+  <text x="1498" y="1264" class="desc">generateCoreLabels() / buildFacePatches() / 绘制补丁层</text>
+
+  <rect x="1470" y="1330" width="420" height="100" class="gray" filter="url(#shadow)"/>
+  <text x="1498" y="1366" class="boxTitle">particles.js</text>
+  <text x="1498" y="1394" class="desc">ThreeParticles.update / spawnTearParticles / spawnPortraitGlow</text>
+
+  <path d="M 1340 1480 C 1400 1480, 1420 330, 1470 330" class="line"/>
+  <path d="M 1340 1480 C 1410 1480, 1420 470, 1470 470" class="line"/>
+  <path d="M 1340 1480 C 1420 1480, 1430 600, 1470 600" class="line"/>
+  <path d="M 1340 1480 C 1430 1480, 1440 730, 1470 730" class="line"/>
+  <path d="M 1340 1480 C 1440 1480, 1450 860, 1470 860" class="line"/>
+  <path d="M 1340 1480 C 1450 1480, 1460 990, 1470 990" class="line"/>
+  <path d="M 1340 1480 C 1450 1480, 1460 1120, 1470 1120" class="lineDash"/>
+  <path d="M 1340 1480 C 1450 1480, 1460 1250, 1470 1250" class="line"/>
+  <path d="M 1340 1480 C 1450 1480, 1460 1380, 1470 1380" class="lineFx"/>
+
+  <text x="1370" y="1450" class="tag">主调度直接调用</text>
+
+  <path d="M 870 580 C 930 580, 940 280, 1000 280" class="lineFx"/>
+  <path d="M 870 440 C 930 440, 940 640, 1000 640" class="lineData"/>
+  <path d="M 870 300 C 930 300, 940 1480, 1000 1480" class="line"/>
+  <text x="888" y="560" class="tag">three.js 提供运行时</text>
+  <text x="888" y="420" class="tag">ml5.js 提供识别能力</text>
+  <text x="888" y="1480" class="tag">p5.js 提供生命周期</text>
+
+  <text x="1980" y="192" class="section">E. 资源文件</text>
+  <rect x="2020" y="250" width="480" height="210" class="peach" filter="url(#shadow)"/>
+  <text x="2048" y="288" class="boxTitle">图片资源目录</text>
+  <text x="2048" y="316" class="file">img/</text>
+  <text x="2048" y="348" class="desc">camera.png / refresh.png</text>
+  <text x="2048" y="374" class="desc">paper_label_warning.png / paper_label_tag.png / paper_label_round.png / paper_label_rect.png / paper_label_tape.png</text>
+  <text x="2048" y="400" class="desc">Blue Label Clean 1.png / Purple Sticky Tab Small 1.png</text>
+  <text x="2048" y="426" class="desc">White Label Folded 1.png / Rounded White 1.png / Orange Round Subtle Tear 1.png</text>
+
+  <rect x="2020" y="500" width="480" height="110" class="gray" filter="url(#shadow)"/>
+  <text x="2048" y="538" class="boxTitle">sketch.js preload</text>
+  <text x="2048" y="566" class="desc">把上面的图片加载进 `uiIcons` 和 `labelImages`</text>
+  <text x="2048" y="589" class="small">后续供 collage.js / ui.js 使用</text>
+
+  <rect x="2020" y="650" width="480" height="110" class="gray" filter="url(#shadow)"/>
+  <text x="2048" y="688" class="boxTitle">state.js</text>
+  <text x="2048" y="716" class="desc">声明 `labelImages` / `uiIcons` 资源引用槽位</text>
+  <text x="2048" y="739" class="small">真正赋值发生在 sketch.js preload</text>
+
+  <rect x="2020" y="800" width="480" height="110" class="gray" filter="url(#shadow)"/>
+  <text x="2048" y="838" class="boxTitle">collage.js</text>
+  <text x="2048" y="866" class="desc">用 `labelImages[...]` 生成拼贴标签外观</text>
+  <text x="2048" y="889" class="small">buildDynamicLabels() / drawLabelObject()</text>
+
+  <rect x="2020" y="950" width="480" height="110" class="gray" filter="url(#shadow)"/>
+  <text x="2048" y="988" class="boxTitle">ui.js</text>
+  <text x="2048" y="1016" class="desc">用 `uiIcons.camera` / `uiIcons.refresh` 画按钮</text>
+  <text x="2048" y="1039" class="small">drawIconButton()</text>
+
+  <path d="M 2500 355 C 2530 355, 2530 555, 2500 555" class="line"/>
+  <path d="M 2020 555 C 1960 555, 1940 1480, 1340 1480" class="lineData"/>
+  <path d="M 2020 705 C 1980 705, 1960 520, 1340 520" class="lineData"/>
+  <path d="M 2020 855 C 1960 855, 1940 1240, 1340 1240" class="lineData"/>
+  <path d="M 2020 1005 C 1960 1005, 1940 880, 1340 880" class="lineData"/>
+  <text x="2510" y="460" class="tag">资源加载</text>
+
+  <rect x="2020" y="1130" width="480" height="250" class="blue" filter="url(#shadow)"/>
+  <text x="2048" y="1168" class="boxTitle">文件到文件的主线总结</text>
+  <text x="2048" y="1200" class="desc">index.html</text>
+  <text x="2140" y="1200" class="desc">→ 依次加载 style / 外部库 / particles / config / state / tracking / patches / ui / intro / questions / collage / stages / sketch</text>
+  <text x="2048" y="1240" class="desc">sketch.js</text>
+  <text x="2140" y="1240" class="desc">→ 作为总入口，直接调 tracking / intro / questions / collage / stages / particles</text>
+  <text x="2048" y="1280" class="desc">state.js + config.js</text>
+  <text x="2215" y="1280" class="desc">→ 作为所有场景共享的数据层和规则层</text>
+  <text x="2048" y="1320" class="desc">img/*</text>
+  <text x="2140" y="1320" class="desc">→ 由 sketch preload 读入，再被 collage.js 和 ui.js 使用</text>
+  <text x="2048" y="1360" class="desc">particles.js</text>
+  <text x="2140" y="1360" class="desc">→ 基于 three.js，为 stages.js / sketch.js 提供粒子与辉光效果</text>
+</svg>
