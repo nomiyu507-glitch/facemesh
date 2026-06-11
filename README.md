@@ -7,7 +7,7 @@ This project is a static front-end app built with `p5.js`, `ml5.js`, `HandPose`,
 1. Start a local server in the project folder:
 
 ```bash
-cd /Users/yuxinnuo/Desktop/final
+cd /
 python3 -m http.server 8000
 ```
 
