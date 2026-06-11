@@ -65,33 +65,48 @@ function finishQuestionPageExit(now) {
 
   const el = document.getElementById("question-title");
   const p = el?.querySelector("p");
+  const hint = document.getElementById("question-hint");
+  const hintP = hint?.querySelector("p");
   if (el) {
     el.classList.add("is-visible");
     el.style.opacity = "0";
   }
+  if (hint) {
+    hint.classList.add("is-visible");
+    hint.style.opacity = "0";
+  }
   if (p) p.style.transform = "translateY(14px)";
+  if (hintP) hintP.style.transform = "translateY(14px)";
 }
 
 function updateQuestionPageTransition(now) {
   const el = document.getElementById("question-title");
   const p = el?.querySelector("p");
+  const hint = document.getElementById("question-hint");
+  const hintP = hint?.querySelector("p");
   if (!questionPagePhase || !el) return;
 
   if (questionPagePhase === "exit") {
     const t = constrain((now - questionPagePhaseStart) / QUESTION_PAGE_EXIT_MS, 0, 1);
     const ease = questionPageEase(t);
     el.style.opacity = String(1 - ease);
+    if (hint) hint.style.opacity = String(1 - ease);
     if (p) p.style.transform = `translateY(${-12 * ease}px)`;
+    if (hintP) hintP.style.transform = `translateY(${-12 * ease}px)`;
     if (t >= 1) finishQuestionPageExit(now);
   } else if (questionPagePhase === "enter") {
     const t = constrain((now - questionPagePhaseStart) / QUESTION_PAGE_ENTER_MS, 0, 1);
     const ease = questionPageEase(t);
     el.style.opacity = String(ease);
+    if (hint) hint.style.opacity = String(ease);
     if (p) p.style.transform = `translateY(${lerp(14, 0, ease)}px)`;
+    if (hintP) hintP.style.transform = `translateY(${lerp(14, 0, ease)}px)`;
     if (t >= 1) {
       questionPagePhase = null;
       el.style.opacity = "";
+      if (hint) hint.style.opacity = "";
       if (p) p.style.transform = "";
+      if (hintP) hintP.style.transform = "";
     }
   }
 }
@@ -429,7 +444,7 @@ function drawQuestionOrb(b, highlighted, now, enterMul = 1) {
   fill(textTone, textTone, textTone + 4, textAlpha);
   textFont(APP_SERIF);
   textAlign(CENTER, CENTER);
-  textSize(constrain(b.r * 0.17, 10, 14));
+  textSize(constrain(b.r * 0.25, 13, 19));
   text(b.text, 0, 0);
   ctx.restore();
   pop();

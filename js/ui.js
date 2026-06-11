@@ -122,7 +122,7 @@ function isPointerOnBubble(b, x, y) {
   return dist(x, y, b.x, b.y) < (b.hitR || b.r);
 }
 
-function handleUiClick(x, y) {
+function handleUiClick(x, y, source = "mouse") {
   if (state === "intro") return;
 
   if (state === "gestureQuestion" && !questionPagePhase && !pendingQuestionAdvance) {
@@ -138,7 +138,11 @@ function handleUiClick(x, y) {
 
   if (state === "collageStudio") {
     if (pendingFragmentCapture) return;
-    if (collageCaptureButtonEnabled?.() && isPointerOnBubble(getCaptureFragmentsButtonDef(), x, y)) {
+    if (
+      source === "mouse" &&
+      collageCaptureButtonEnabled?.() &&
+      isPointerOnBubble(getCaptureFragmentsButtonDef(), x, y)
+    ) {
       startFragmentCapture?.();
       return;
     }
@@ -173,11 +177,11 @@ function handleUiClick(x, y) {
 }
 
 function mousePressed() {
-  handleUiClick(mouseX, mouseY);
+  handleUiClick(mouseX, mouseY, "mouse");
 }
 
 function touchEnded() {
-  handleUiClick(mouseX, mouseY);
+  handleUiClick(mouseX, mouseY, "touch");
 }
 
 // ==============================

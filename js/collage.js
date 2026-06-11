@@ -1644,7 +1644,7 @@ function syncCollageTitle() {
   const titleEl = document.getElementById("question-title");
   const titleP = titleEl?.querySelector("p");
   if (titleEl && titleP) {
-    titleP.textContent = "나에게 속하지 않는 라벨을 떼어내세요.";
+    titleP.textContent = "마음에 들지 않는 라벨을 손으로 떼어내세요.";
     titleEl.classList.add("is-visible");
     titleEl.setAttribute("aria-hidden", "false");
     titleEl.style.opacity = "";
@@ -1660,11 +1660,21 @@ function hideCollageTitle() {
 }
 
 function getCaptureFragmentsButtonDef() {
-  return { x: width * 0.54, y: height * 0.91, r: 38, hitR: 50, icon: "camera" };
+  return { x: width * 0.56, y: height * 0.91, r: 38, hitR: 50, icon: "camera" };
 }
 
 function getRestartFragmentsButtonDef() {
-  return { x: width * 0.46, y: height * 0.91, r: 38, hitR: 50, icon: "refresh" };
+  return { x: width * 0.44, y: height * 0.91, r: 38, hitR: 50, icon: "refresh" };
+}
+
+function drawCaptureButtonHint(button) {
+  push();
+  textAlign(CENTER, TOP);
+  textFont("Chiron GoRound TC");
+  textSize(12.5);
+  fill(95, 99, 106, 220);
+  text("카메라 버튼을 클릭해 사진을 저장하세요.", button.x, button.y + button.r + 16);
+  pop();
 }
 
 function canCaptureFragments() {
@@ -2025,7 +2035,6 @@ function drawCollageStudio(_finger, _dt) {
     const captureButton = {
       ...getCaptureFragmentsButtonDef(),
       disabled: !collageCaptureButtonEnabled(),
-      progress: collageCaptureHoldMs / 320,
     };
     const refreshButton = {
       ...getRestartFragmentsButtonDef(),
@@ -2033,25 +2042,12 @@ function drawCollageStudio(_finger, _dt) {
     };
     if (!fragmentCaptureSnapshot) {
       drawIconButton(captureButton, { x: mouseX, y: mouseY });
+      drawCaptureButtonHint(captureButton);
     }
     drawIconButton(refreshButton, { x: mouseX, y: mouseY });
-
-    const captureInside =
-      !fragmentCaptureSnapshot &&
-      !!cursor &&
-      collageCaptureButtonEnabled() &&
-      isPointerOnBubble(captureButton, cursor.x, cursor.y);
-    if (captureInside) {
-      collageCaptureHoldMs += deltaTime || 16;
-      if (collageCaptureHoldMs >= 320 && !collageCaptureLatched) {
-        startFragmentCapture();
-        collageCaptureLatched = true;
-      }
-    } else {
-      collageCaptureHoldMs = 0;
-      collageCaptureLatched = false;
-    }
-    collageCaptureFingerInside = captureInside;
+    collageCaptureHoldMs = 0;
+    collageCaptureLatched = false;
+    collageCaptureFingerInside = false;
 
     const refreshInside = !!cursor && isPointerOnBubble(refreshButton, cursor.x, cursor.y);
     if (refreshInside) {

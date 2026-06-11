@@ -100,17 +100,23 @@ function resizeIntroLayers() {
 function setPoeticSceneVisible(visible, { showTitle = false, showQuestion = false, collageStudio = false } = {}) {
   const stack = document.getElementById("intro-stack");
   const title = document.getElementById("intro-title");
+  const introHint = document.getElementById("intro-hint");
   const questionTitle = document.getElementById("question-title");
+  const questionHint = document.getElementById("question-hint");
   const p5Holder = document.getElementById("p5-container");
   stack?.classList.toggle("is-visible", visible);
   stack?.classList.toggle("is-collage", visible && collageStudio);
   title?.classList.toggle("is-visible", visible && showTitle);
+  introHint?.classList.toggle("is-visible", visible && showTitle);
   questionTitle?.classList.toggle("is-visible", visible && showQuestion);
+  questionHint?.classList.toggle("is-visible", visible && showQuestion && !collageStudio);
   p5Holder?.classList.toggle("is-intro", visible && !showQuestion && !collageStudio);
   p5Holder?.classList.toggle("is-question", visible && showQuestion && !collageStudio);
   p5Holder?.classList.toggle("is-collage", visible && collageStudio);
   if (stack) stack.setAttribute("aria-hidden", visible ? "false" : "true");
+  if (introHint) introHint.setAttribute("aria-hidden", visible && showTitle ? "false" : "true");
   if (questionTitle) questionTitle.setAttribute("aria-hidden", showQuestion ? "false" : "true");
+  if (questionHint) questionHint.setAttribute("aria-hidden", visible && showQuestion && !collageStudio ? "false" : "true");
   if (!showQuestion && questionTitle) questionTitle.classList.remove("is-visible");
   if (!visible && introMeshCtx && introMeshCanvas) {
     introMeshCtx.clearRect(0, 0, introMeshCanvas.width, introMeshCanvas.height);

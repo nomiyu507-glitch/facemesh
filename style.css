@@ -99,6 +99,46 @@ body {
   white-space: nowrap;
 }
 
+#intro-hint {
+  position: fixed;
+  top: clamp(35.5rem, 80vh, 42rem);
+  left: 50%;
+  z-index: 4;
+  transform: translateX(-50%) translateZ(0);
+  width: min(78vw, 28rem);
+  padding: 0 1rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+#intro-hint.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#intro-hint p {
+  margin: 0;
+  font-family: "Chiron GoRound TC", sans-serif;
+  font-optical-sizing: auto;
+  font-size: clamp(0.72rem, 1.45vmin, 0.92rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: rgba(95, 99, 106, 0.86);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#intro-hint.is-visible p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 #p5-container {
   position: fixed;
   inset: 0;
@@ -169,6 +209,46 @@ body {
   color: #222428;
   text-align: center;
   transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#question-hint {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1.6rem, 5vh, 3rem);
+  z-index: 25;
+  transform: translateX(-50%) translateZ(0);
+  width: min(78vw, 28rem);
+  padding: 0 1rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+#question-hint.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#question-hint p {
+  margin: 0;
+  font-family: "Chiron GoRound TC", sans-serif;
+  font-optical-sizing: auto;
+  font-size: clamp(0.72rem, 1.45vmin, 0.92rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: rgba(95, 99, 106, 0.86);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#question-hint.is-visible p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #three-container {
